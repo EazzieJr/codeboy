@@ -63,6 +63,16 @@
               >
                 Chain: <span class="text-[#6B6761]">Ethereum (ERC-721)</span>
               </li>
+
+              <li
+                data-aos="fade-right"
+                data-aos-duration=""
+                data-aos-delay="100"
+                class="leading-[2.5]"
+              >
+                Public sale date: <span class="text-[#6B6761]">March 4th, 2022 2PM EST</span>
+              </li>
+              
               <li
                 data-aos="fade-right"
                 data-aos-duration=""
@@ -70,7 +80,7 @@
                 class="leading-[2.5]"
               >
                 Lifetime LP Mint Fee:
-                <span class="text-[#6B6761]">0.0302 ETH</span>
+                <span class="text-[#6B6761]">FREE</span>
               </li>
               <li
                 data-aos="fade-right"
@@ -386,7 +396,7 @@
                 <p
                   class="font-monument font-light text-[8px] xl:text-[10px] 2xl:text-[xs] leading-relaxed"
                 >
-                  The mint cost of each Listening Pass is set at 0.0302 ETH.
+                  The mint cost of each Listening Pass is FREE
                   (not including gas fees.)
                 </p>
               </div>

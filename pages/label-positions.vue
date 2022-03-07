@@ -388,8 +388,8 @@
               class="requirement font-monument-light text-white text-[10px] xl:text-xs 2xl:text-sm mt-2 xl:mt-3 mb-2 xl:mb-3 leading-normal"
             >
               Required:
-              <span class="font-monument-regular">6 CB Sai Looks</span> <br />
-              or <span class="font-monument-regular">1 CB Sai F&F Look</span>
+              <span class="font-monument-regular">Role granted by CODEBOY SAI</span> <!-- <br />
+              or <span class="font-monument-regular">1 CB Sai F&F Look</span> -->
             </p>
 
             <p
