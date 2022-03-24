@@ -88,7 +88,7 @@ export default {
           alt: "An Asset of the Uncle Butch Outfit",
           name: "Uncle Butch",
           description:
-            "This outfit pays respect to Butch Lewis, a popular boxing promoter and business man. It features a white suit with no button up. Inspired by the song ‘Kid Chocolate’",
+            "This outfit pays respect to Butch Lewis, a popular boxing promoter and busniness man. It features a white suit with no button up. Inspired by the song ‘Kid Chocolate’",
         },
 
         {

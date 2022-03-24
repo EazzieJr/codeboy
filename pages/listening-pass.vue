@@ -63,16 +63,6 @@
               >
                 Chain: <span class="text-[#6B6761]">Ethereum (ERC-721)</span>
               </li>
-
-              <li
-                data-aos="fade-right"
-                data-aos-duration=""
-                data-aos-delay="100"
-                class="leading-[2.5]"
-              >
-                Public sale date: <span class="text-[#6B6761]">March 4th, 2022 2PM EST</span>
-              </li>
-              
               <li
                 data-aos="fade-right"
                 data-aos-duration=""
@@ -80,7 +70,7 @@
                 class="leading-[2.5]"
               >
                 Lifetime LP Mint Fee:
-                <span class="text-[#6B6761]">FREE</span>
+                <span class="text-[#6B6761]">Free!</span>
               </li>
               <li
                 data-aos="fade-right"
@@ -98,8 +88,11 @@
               data-aos-delay="400"
               class="button flex lg:block justify-center mt-5"
             >
+              <!--@click="mintClicked"-->
               <button
+                @click="mintClicked"
                 class="uppercase relative font-sf text-white text-xs px-28 xl:px-32 py-1.5 xl:py-2 bg-black"
+                id="mintButton"
               >
                 mint
               </button>
@@ -396,8 +389,8 @@
                 <p
                   class="font-monument font-light text-[8px] xl:text-[10px] 2xl:text-[xs] leading-relaxed"
                 >
-                  The mint cost of each Listening Pass is FREE
-                  (not including gas fees.)
+                  The minting of each Listening Pass is free (not including gas fees).
+                  Listening passes allow early mint access to future projects.
                 </p>
               </div>
             </div>
@@ -460,10 +453,61 @@
 
 <script>
 import aosMixin from "~/mixins/aos";
+import { ethers } from "ethers";
+import lp from "~/abi/CBSaiListeningPass.json";
+import confetti from 'canvas-confetti';
 
 export default {
   layout: "default",
   mixins: [aosMixin],
+  methods: {
+    async mintClicked() {
+      if (document.getElementById("mintButton").innerText.toLowerCase() == "minting...") {
+        return;
+      }
+
+      try {
+        if (window.web3obj) {
+          // this shit works, but can work better
+          console.log(window.web3obj)
+          var address = window.web3obj.currentProvider.selectedAddress
+          if (!address)
+            address = window.web3obj.currentProvider.accounts[0]
+          const CollectionContract = new window.web3obj.eth.Contract(lp.abi, "0x83BEB7F96a464805F170b881883b97eB8FD64e8D");
+          document.getElementById("mintButton").innerText = "Minting..."
+          CollectionContract.methods.mint().send({from: address, value: 0}).on("receipt", (receipt) => {
+            console.log(receipt, "receipt");
+            document.getElementById("mintButton").innerText = "Success!"
+
+            // confetti
+            var duration = 15 * 1000;
+            var animationEnd = Date.now() + duration;
+            var defaults = { startVelocity: 30, spread: 360, ticks: 60, zIndex: 0 };
+
+            function randomInRange(min, max) {
+              return Math.random() * (max - min) + min;
+            }
+
+            var interval = setInterval(function() {
+              var timeLeft = animationEnd - Date.now();
+
+              if (timeLeft <= 0) {
+                return clearInterval(interval);
+              }
+
+              var particleCount = 50 * (timeLeft / duration);
+              // since particles fall down, start a bit higher than random
+              confetti(Object.assign({}, defaults, { particleCount, origin: { x: randomInRange(0.1, 0.3), y: Math.random() - 0.2 } }));
+              confetti(Object.assign({}, defaults, { particleCount, origin: { x: randomInRange(0.7, 0.9), y: Math.random() - 0.2 } }));
+            }, 250);
+          })
+
+        }
+      } catch(e) {
+        console.log(e)
+      }
+    }
+  }
 };
 </script>
 

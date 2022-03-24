@@ -47,8 +47,16 @@
               data-aos-delay="400"
               class="leading-loose xl:leading-[2.5]"
             >
-              Public Sale Date:
-              <span class="text-[#2E2B26]">Coming soon.</span>
+              Presale Mint Date:
+              <span class="text-[#2E2B26]">March 25th, 2022 -- 5pm EST</span>
+            </li>
+            <li
+              data-aos="fade-right"
+              data-aos-duration="300"
+              data-aos-delay="600"
+              class="leading-loose xl:leading-[2.5]"
+            >
+              Max mint per wallet: <span class="text-[#2E2B26]">Must have a <nuxt-link to="/listening-pass" class="underline capitalize text-black">listening pass</nuxt-link></span>
             </li>
             <li
               data-aos="fade-right"
@@ -57,14 +65,6 @@
               class="leading-loose xl:leading-[2.5]"
             >
               Mint Price: <span class="text-[#2E2B26]">0.08 ETH</span>
-            </li>
-            <li
-              data-aos="fade-right"
-              data-aos-duration="300"
-              data-aos-delay="600"
-              class="leading-loose xl:leading-[2.5]"
-            >
-              Max mint per wallet: <span class="text-[#2E2B26]">3</span>
             </li>
           </ul>
 

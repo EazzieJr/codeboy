@@ -235,42 +235,6 @@
           </div>
 
           <div
-            class="faq-box-7 faq-box w-full md:w-[24.5rem] lg:w-[26rem] xl:w-[35rem] h-14 sm:h-12 xl:h-14 border-t py-3 overflow-hidden"
-          >
-            <div class="flex items-center justify-between top">
-              <h5
-                class="font-monument-regular text-[10px] xl:text-xs 2xl:text-sm max-w-[95%]"
-              >
-                How many CB Sai M&M Looks can I purchase in one transaction?
-              </h5>
-
-              <div class="svg-container">
-                <svg
-                  class="w-2 transition duration-500"
-                  viewBox="0 0 14 8"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    fill-rule="evenodd"
-                    clip-rule="evenodd"
-                    d="M6.9998 6.20479L1.39755 0.602539L0.602051 1.39803L6.9998 7.79578L13.3975 1.39803L12.602 0.602539L6.9998 6.20479Z"
-                    fill="#2E2B26"
-                  />
-                </svg>
-              </div>
-            </div>
-
-            <div class="hidden mt-3 bottom">
-              <p
-                class="font-monument font-light text-[8px] xl:text-[10px] 2xl:text-[xs] leading-relaxed"
-              >
-                There is a limit of 3 CB Sai M&M Looks that can be purchased in 1 transaction. 
-              </p>
-            </div>
-          </div>
-
-          <div
             class="faq-box-8 faq-box w-full md:w-[24.5rem] lg:w-[26rem] xl:w-[35rem] h-12 xl:h-10 border-t border-b py-3 overflow-hidden"
           >
             <div class="flex items-center justify-between top">

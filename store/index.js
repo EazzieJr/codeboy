@@ -1,19 +1,20 @@
 export const state = () => ({
-    id: 0,
-    songIndex: 0,
-    currentCover: "",
-    currentSongTitle: '',
-    currentSrc: '',
-    category: 'all',
-    mixtape: '',
-    currentLyrics:  ``,
+  id: 0,
+  songIndex: 0,
+  currentCover: "",
+  currentSongTitle: '',
+  currentSrc: '',
+  category: 'all',
+  mixtape: '',
+  modalOpened: false,
+  currentLyrics: ``,
 })
 
 export const mutations = {
-  next(state) { 
+  next(state) {
     state.songIndex++
 
-    if(state.songIndex > 28) {
+    if (state.songIndex > 28) {
       state.songIndex = 0
     }
   },
@@ -21,7 +22,7 @@ export const mutations = {
   prev(state) {
     state.songIndex--
 
-    if(state.songIndex < 0) {
+    if (state.songIndex < 0) {
       state.songIndex = 28
     }
   },
@@ -56,6 +57,10 @@ export const mutations = {
 
   changeLyrics(state, payload) {
     state.currrentLyrics = payload
+  },
+
+  toggleModal(state) {
+    state.modalOpened = !state.modalOpened
   },
 
   increement(state) {

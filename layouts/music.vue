@@ -1,5 +1,9 @@
 <template>
   <div>
+    <transition name="fade" appear>
+      <Modal v-show="this.modalOpened" class="fixed top-0 z-50 transform" />
+    </transition>
+
     <div class="container px-5 mx-auto sm:px-10 lg:px-14 xl:px-5">
       <Navigation />
       <main>
@@ -9,12 +13,10 @@
 
     <footer class="mini-player w-full bg-[#FAFAFA] py-3 fixed bottom-0 shadow">
       <div class="container px-5 mx-auto sm:px-10 lg:px-14 xl:px-5">
-        <div
-          class="flex items-center justify-between mini-player-container lg:justify-start md:space-x-10 lg:space-x-20 xl:space-x-28 2xl:space-x-36"
-        >
+        <div class="flex items-center justify-between mini-player-container lg:justify-start md:space-x-10 lg:space-x-20 xl:space-x-28 2xl:space-x-36">
           <div class="flex items-center space-x-2 left-container">
             <div
-              class="cover w-14 h-14 rounded-lg bg-center bg-contain bg-no-repeat"
+              class="bg-center bg-no-repeat bg-contain rounded-lg cover w-14 h-14"
               :style="{ backgroundImage: `url( ${currentCover} )` }"
             >
               <!-- <cover class="w-full" :src="track.cover" alt=""> -->
@@ -54,11 +56,11 @@
               @click="initSong()"
             >
               <font-awesome-icon
-                class="big-play-icon text-white"
+                class="text-white big-play-icon"
                 :icon="['fas', 'play']"
               />
               <font-awesome-icon
-                class="big-pause-icon text-white hide"
+                class="text-white big-pause-icon hide"
                 :icon="['fas', 'pause']"
               />
             </button>
@@ -142,7 +144,7 @@
 </template>
 
 <script>
-import { mapState, mapMutations, mapActions } from "vuex";
+import { mapState, mapMutations } from "vuex";
 
 export default {
   props: {
@@ -158,8 +160,8 @@ export default {
           cover:
             "https://res.cloudinary.com/eazzie/image/upload/q_100/v1644840558/Codeboy/Mixtape_small_xbt54t.webp",
           id: 0,
-          status: "/svg/lock.svg",
-          src: "",
+          src: "https://res.cloudinary.com/dhww4ghgg/video/upload/v1646413751/Days_Amazing_c72dox.wav",
+          locked: true
         },
 
         {
@@ -168,8 +170,8 @@ export default {
           cover:
             "https://res.cloudinary.com/eazzie/image/upload/q_100/v1644840558/Codeboy/Mixtape_small_xbt54t.webp",
           id: 1,
-          status: "/svg/lock.svg",
-          src: "",
+          src: "https://res.cloudinary.com/eazzie/video/upload/q_100/v1644335921/Codeboy/Never_Change_Up_eccwyu.wav",
+          locked: true
         },
 
         {
@@ -178,8 +180,8 @@ export default {
           cover:
             "https://res.cloudinary.com/eazzie/image/upload/q_100/v1644840558/Codeboy/Mixtape_small_xbt54t.webp",
           id: 2,
-          status: "/svg/lock.svg",
-          src: "",
+          src: "https://res.cloudinary.com/dhww4ghgg/video/upload/v1646413789/Feelings_Can_t_Fade_Away_wq1o68.wav",
+          locked: true
         },
 
         {
@@ -188,8 +190,8 @@ export default {
           cover:
             "https://res.cloudinary.com/eazzie/image/upload/q_100/v1644840558/Codeboy/Mixtape_small_xbt54t.webp",
           id: 3,
-          status: "/svg/lock.svg",
-          src: "",
+          src: "https://res.cloudinary.com/dhww4ghgg/video/upload/v1646413769/HOPELESS_ROMANTIC_wo6dhu.wav",
+          locked: true
         },
 
         {
@@ -198,8 +200,8 @@ export default {
           cover:
             "https://res.cloudinary.com/eazzie/image/upload/q_100/v1644840558/Codeboy/Mixtape_small_xbt54t.webp",
           id: 4,
-          status: "/svg/lock.svg",
-          src: "",
+          src: "https://res.cloudinary.com/dhww4ghgg/video/upload/v1646413807/Meetings_Makeups_tw8obt.wav",
+          locked: true
         },
 
         {
@@ -208,8 +210,8 @@ export default {
           cover:
             "https://res.cloudinary.com/eazzie/image/upload/q_100/v1644840558/Codeboy/Mixtape_small_xbt54t.webp",
           id: 5,
-          status: "/svg/lock.svg",
-          src: "",
+          src: "https://res.cloudinary.com/dhww4ghgg/video/upload/v1646413785/Shotgun_Ring_gnltbl.wav",
+          locked: true
         },
 
         {
@@ -218,8 +220,8 @@ export default {
           cover:
             "https://res.cloudinary.com/eazzie/image/upload/q_100/v1644840558/Codeboy/Mixtape_small_xbt54t.webp",
           id: 6,
-          status: "/svg/lock.svg",
-          src: "",
+          src: "https://res.cloudinary.com/dhww4ghgg/video/upload/v1646413803/Kelly_Logans_House_Trolley_d6cykt.wav",
+          locked: true
         },
 
         {
@@ -228,8 +230,8 @@ export default {
           cover:
             "https://res.cloudinary.com/eazzie/image/upload/q_100/v1644840558/Codeboy/Mixtape_small_xbt54t.webp",
           id: 7,
-          status: "/svg/lock.svg",
-          src: "",
+          src: "https://res.cloudinary.com/dhww4ghgg/video/upload/v1646413795/Rough_Patches_ozhahc.wav",
+          locked: true
         },
 
         {
@@ -238,8 +240,8 @@ export default {
           cover:
             "https://res.cloudinary.com/eazzie/image/upload/q_100/v1644840558/Codeboy/Mixtape_small_xbt54t.webp",
           id: 8,
-          status: "/svg/lock.svg",
-          src: "",
+          src: "https://res.cloudinary.com/dhww4ghgg/video/upload/v1646413813/Caress_Me_nelmln.wav",
+          locked: true
         },
 
         {
@@ -248,8 +250,8 @@ export default {
           cover:
             "https://res.cloudinary.com/eazzie/image/upload/q_100/v1644840558/Codeboy/Mixtape_small_xbt54t.webp",
           id: 9,
-          status: "/svg/lock.svg",
           src: "https://res.cloudinary.com/eazzie/video/upload/v1644335803/Codeboy/Capable_wmcn4x.wav",
+          locked: true
         },
 
         {
@@ -258,8 +260,8 @@ export default {
           cover:
             "https://res.cloudinary.com/eazzie/image/upload/q_100/v1644840558/Codeboy/Mixtape_small_xbt54t.webp",
           id: 10,
-          status: "/svg/lock.svg",
-          src: "",
+          src: "https://res.cloudinary.com/eazzie/video/upload/q_100/v1642773081/Codeboy/Nothing_2_Prove_SINGLE_ys2oof.mp3",
+          locked: true
         },
 
         {
@@ -268,8 +270,8 @@ export default {
           cover:
             "https://res.cloudinary.com/eazzie/image/upload/q_100/v1644840558/Codeboy/Mixtape_small_xbt54t.webp",
           id: 11,
-          status: "/svg/lock.svg",
-          src: "",
+          src: "https://res.cloudinary.com/dhww4ghgg/video/upload/v1646413798/Kid_Chocolate_d2gb2q.wav",
+          locked: true
         },
 
         {
@@ -278,8 +280,8 @@ export default {
           cover:
             "https://res.cloudinary.com/eazzie/image/upload/q_100/v1644840558/Codeboy/Mixtape_small_xbt54t.webp",
           id: 12,
-          status: "/svg/lock.svg",
-          src: "",
+          src: "https://res.cloudinary.com/dhww4ghgg/video/upload/v1646413704/Made_For_This_cfbzrz.wav",
+          locked: true
         },
 
         {
@@ -311,7 +313,6 @@ export default {
             "https://res.cloudinary.com/eazzie/image/upload/q_100/v1642773126/Codeboy/Nothing_2_Prove_COVER_ART_nluixb.webp",
           duration: "3:14",
           id: 15,
-          status: "/svg/lock.svg",
           src: "https://res.cloudinary.com/eazzie/video/upload/q_100/v1642773081/Codeboy/Nothing_2_Prove_SINGLE_ys2oof.mp3",
           type: "singles",
         },
@@ -518,131 +519,129 @@ export default {
         {
           name: "Days Amazing",
           duration: "2:39",
-          cover:
-            "https://res.cloudinary.com/eazzie/image/upload/q_100/v1644840558/Codeboy/Mixtape_small_xbt54t.webp",
+          cover: "https://res.cloudinary.com/eazzie/image/upload/q_100/v1644355083/Codeboy/Mixtape_small_kl5p0z.webp",
           id: 0,
-          status: "/svg/lock.svg",
-          src: "",
+          src: "https://res.cloudinary.com/dhww4ghgg/video/upload/v1646413751/Days_Amazing_c72dox.wav",
+          locked: true
         },
 
         {
           name: "Never Change Up",
           duration: "3:30",
           cover:
-            "https://res.cloudinary.com/eazzie/image/upload/q_100/v1644840558/Codeboy/Mixtape_small_xbt54t.webp",
+            "https://res.cloudinary.com/eazzie/image/upload/q_100/v1644355083/Codeboy/Mixtape_small_kl5p0z.webp",
           id: 1,
-          status: "/svg/lock.svg",
-          src: "https://res.cloudinary.com/eazzie/video/upload/q_100/v1644335921/Codeboy/Never_Change_Up_eccwyu.wav",
+          src: "https://res.cloudinary.com/dhww4ghgg/video/upload/v1646413792/Never_Change_Up_n1r542.wav",
+          locked: true
         },
 
         {
           name: "Feelings Can't Fade away",
           duration: "3:34",
-          cover:
-            "https://res.cloudinary.com/eazzie/image/upload/q_100/v1644840558/Codeboy/Mixtape_small_xbt54t.webp",
+          cover: "https://res.cloudinary.com/eazzie/image/upload/q_100/v1644355083/Codeboy/Mixtape_small_kl5p0z.webp",
           id: 2,
-          status: "/svg/lock.svg",
-          src: "",
+          src: "https://res.cloudinary.com/dhww4ghgg/video/upload/v1646413789/Feelings_Can_t_Fade_Away_wq1o68.wav",
+          locked: true
         },
 
         {
           name: "Hopeless Romantic",
           duration: "3:26",
           cover:
-            "https://res.cloudinary.com/eazzie/image/upload/q_100/v1644840558/Codeboy/Mixtape_small_xbt54t.webp",
+            "https://res.cloudinary.com/eazzie/image/upload/q_100/v1644355083/Codeboy/Mixtape_small_kl5p0z.webp",
           id: 3,
-          status: "/svg/lock.svg",
-          src: "",
+          src: "https://res.cloudinary.com/dhww4ghgg/video/upload/v1646413769/HOPELESS_ROMANTIC_wo6dhu.wav",
+          locked: true
         },
 
         {
           name: "Meetings & Makeups",
           duration: "4:51",
           cover:
-            "https://res.cloudinary.com/eazzie/image/upload/q_100/v1644840558/Codeboy/Mixtape_small_xbt54t.webp",
+            "https://res.cloudinary.com/eazzie/image/upload/q_100/v1644355083/Codeboy/Mixtape_small_kl5p0z.webp",
           id: 4,
-          status: "/svg/lock.svg",
-          src: "",
+          src: "https://res.cloudinary.com/dhww4ghgg/video/upload/v1646413807/Meetings_Makeups_tw8obt.wav",
+          locked: true
         },
 
         {
           name: "Shotgun Ring",
           duration: "2:53",
           cover:
-            "https://res.cloudinary.com/eazzie/image/upload/q_100/v1644840558/Codeboy/Mixtape_small_xbt54t.webp",
+            "https://res.cloudinary.com/eazzie/image/upload/q_100/v1644355083/Codeboy/Mixtape_small_kl5p0z.webp",
           id: 5,
-          status: "/svg/lock.svg",
-          src: "",
+          src: "https://res.cloudinary.com/dhww4ghgg/video/upload/v1646413785/Shotgun_Ring_gnltbl.wav",
+          locked: true
         },
 
         {
           name: "Kelly Logan's House Trolley",
           duration: "4:26",
           cover:
-            "https://res.cloudinary.com/eazzie/image/upload/q_100/v1644840558/Codeboy/Mixtape_small_xbt54t.webp",
+            "https://res.cloudinary.com/eazzie/image/upload/q_100/v1644355083/Codeboy/Mixtape_small_kl5p0z.webp",
           id: 6,
-          status: "/svg/lock.svg",
-          src: "",
+          src: "https://res.cloudinary.com/dhww4ghgg/video/upload/v1646413803/Kelly_Logans_House_Trolley_d6cykt.wav",
+          locked: true
         },
 
         {
           name: "Rough Patches",
           duration: "3:04",
           cover:
-            "https://res.cloudinary.com/eazzie/image/upload/q_100/v1644840558/Codeboy/Mixtape_small_xbt54t.webp",
+            "https://res.cloudinary.com/eazzie/image/upload/q_100/v1644355083/Codeboy/Mixtape_small_kl5p0z.webp",
           id: 7,
-          status: "/svg/lock.svg",
-          src: "https://res.cloudinary.com/eazzie/video/upload/v1644335984/Codeboy/Rough_Patches_qq6pnh.wav",
+          src: "https://res.cloudinary.com/dhww4ghgg/video/upload/v1646413795/Rough_Patches_ozhahc.wav",
+          locked: true
         },
 
         {
           name: "Caress Me",
           duration: "3:03",
           cover:
-            "https://res.cloudinary.com/eazzie/image/upload/q_100/v1644840558/Codeboy/Mixtape_small_xbt54t.webp",
+            "https://res.cloudinary.com/eazzie/image/upload/q_100/v1644355083/Codeboy/Mixtape_small_kl5p0z.webp",
           id: 8,
-          status: "/svg/lock.svg",
-          src: "",
+          src: "https://res.cloudinary.com/dhww4ghgg/video/upload/v1646413813/Caress_Me_nelmln.wav",
+          locked: true
         },
 
         {
           name: "Capable",
           duration: "2:36",
           cover:
-            "https://res.cloudinary.com/eazzie/image/upload/q_100/v1644840558/Codeboy/Mixtape_small_xbt54t.webp",
+            "https://res.cloudinary.com/eazzie/image/upload/q_100/v1644355083/Codeboy/Mixtape_small_kl5p0z.webp",
           id: 9,
-          status: "/svg/lock.svg",
-          src: "https://res.cloudinary.com/eazzie/video/upload/v1644335803/Codeboy/Capable_wmcn4x.wav",
+          src: "https://res.cloudinary.com/dhww4ghgg/video/upload/v1646413802/Capable_zzjdqv.wav",
+          locked: true
         },
 
         {
           name: "Nun To Prove",
           duration: "3:14",
           cover:
-            "https://res.cloudinary.com/eazzie/image/upload/q_100/v1644840558/Codeboy/Mixtape_small_xbt54t.webp",
+            "https://res.cloudinary.com/eazzie/image/upload/q_100/v1644355083/Codeboy/Mixtape_small_kl5p0z.webp",
           id: 10,
-          status: "/svg/lock.svg",
-          src: "",
+          src: "https://res.cloudinary.com/dhww4ghgg/video/upload/v1646413712/Nuntoprove_oud8cn.mp3",
+          locked: true
         },
 
         {
           name: "Kid Chocolate",
           duration: "4:12",
           cover:
-            "https://res.cloudinary.com/eazzie/image/upload/q_100/v1644840558/Codeboy/Mixtape_small_xbt54t.webp",
+            "https://res.cloudinary.com/eazzie/image/upload/q_100/v1644355083/Codeboy/Mixtape_small_kl5p0z.webp",
           id: 11,
-          status: "/svg/lock.svg",
-          src: "",
+          src: "https://res.cloudinary.com/dhww4ghgg/video/upload/v1646413798/Kid_Chocolate_d2gb2q.wav",
+          locked: true
         },
 
         {
           name: "Made For This",
           duration: "3:21",
           cover:
-            "https://res.cloudinary.com/eazzie/image/upload/q_100/v1644840558/Codeboy/Mixtape_small_xbt54t.webp",
+            "https://res.cloudinary.com/eazzie/image/upload/q_100/v1644355083/Codeboy/Mixtape_small_kl5p0z.webp",
           id: 12,
-          status: "/svg/lock.svg",
-          src: "https://res.cloudinary.com/eazzie/video/upload/v1644336005/Codeboy/Made_For_This_omfhxb.wav",
+          src: "https://res.cloudinary.com/dhww4ghgg/video/upload/v1646413704/Made_For_This_cfbzrz.wav",
+          locked: true
         },
       ],
 
@@ -740,6 +739,7 @@ export default {
       "currentSrc",
       "currentCover",
       "category",
+      "modalOpened"
     ]),
   },
 
@@ -752,6 +752,7 @@ export default {
       "changeCurrentSrc",
       "changeCover",
       "changeCategory",
+      "toggleModal"
     ]),
 
     initSong(id, name) {
@@ -779,11 +780,16 @@ export default {
       if (this.category === "all") {
         this.tracks.map((item) => {
           if (item.id === id) {
+            if (item.locked === true) {
+              this.toggleModal()
+              return;
+            }
             audio.src = item.src;
             this.changeCurrentSrc(item.src);
             this.changeCover(item.cover);
             this.changeSongIndex(id);
             this.changeCurrentSongTitle(item.name);
+            this.changeLyrics(item.lyrics);
             // console.log(item.src);
             currentTile.forEach((itemTwo, index) => {
               itemTwo.classList.remove("current");
@@ -804,6 +810,7 @@ export default {
             this.changeCover(item.cover);
             this.changeSongIndex(id);
             this.changeCurrentSongTitle(item.name);
+            this.changeLyrics(item.lyrics);
             currentTile.forEach((itemTwo, index) => {
               itemTwo.classList.remove("current");
 
@@ -818,11 +825,16 @@ export default {
       if (this.category === "meetings") {
         this.meetings.map((item) => {
           if (item.id === id) {
+            if (item.locked === true) {
+              this.toggleModal()
+              return;
+            }
             audio.src = item.src;
             this.changeCurrentSrc(item.src);
             this.changeCover(item.cover);
             this.changeSongIndex(id);
             this.changeCurrentSongTitle(item.name);
+            this.changeLyrics(item.lyrics);
             // console.log(item.src);
             currentTile.forEach((itemTwo, index) => {
               itemTwo.classList.remove("current");
@@ -843,6 +855,7 @@ export default {
             this.changeCover(item.cover);
             this.changeSongIndex(id);
             this.changeCurrentSongTitle(item.name);
+            this.changeLyrics(item.lyrics);
             // console.log(item.src);
             currentTile.forEach((itemTwo, index) => {
               itemTwo.classList.remove("current");
@@ -970,6 +983,16 @@ export default {
 </script>
 
 <style>
+.fade-enter-active,
+.fade-leave-active {
+  transition: all .5s;
+}
+.fade-enter,
+.fade-leave-to {
+  transition: all .5s;
+  opacity: 0;
+}
+
 .hide {
   display: none;
 }
