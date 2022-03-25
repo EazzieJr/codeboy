@@ -32,7 +32,7 @@
                     {{ track.duration }}
                 </p>
 
-                <img class="w-4 xl:w-5" :src="track.status" alt="">
+                <img v-show="track.locked" class="w-4 xl:w-5" src="/svg/lock.svg" alt="">
 
                 <button class="lyrics text-[10px] xl:text-xs 2xl:text-sm py-2 px-3 rounded-full border border-black hover:bg-[#6837fa] hover:text-white transition duration-500" @click="handleLyrics">
                     Lyrics
